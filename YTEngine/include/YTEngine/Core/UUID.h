@@ -1,0 +1,45 @@
+#pragma once
+
+#include <xhash>
+
+namespace Yor
+{
+  class UUID
+  {
+  public:
+    inline static const uint64_t INVALID = UINT64_MAX;
+
+  public:
+    UUID();
+    UUID(uint64_t uuid);
+
+    bool valid() const;
+    uint64_t uint() const;
+
+  public:
+    bool operator==(const UUID& rhs) const
+    {
+      return m_uuid == rhs.m_uuid;
+    }
+
+    bool operator!=(const UUID& rhs) const
+    {
+      return m_uuid != rhs.m_uuid;
+    }
+
+  private:
+    uint64_t m_uuid;
+  };
+}
+
+namespace std
+{
+  template<>
+  struct hash<Yor::UUID>
+  {
+    size_t operator()(const Yor::UUID& rhs) const
+    {
+      return hash<uint64_t>()(uint64_t(rhs.uint()));
+    }
+  };
+}

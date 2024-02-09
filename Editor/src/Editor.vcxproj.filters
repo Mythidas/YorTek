@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{2AEC870B-96F5-877C-1F71-9E7C8B79937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Internal">
+      <UniqueIdentifier>{0291F903-EE5D-540F-1777-42B703A3899D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{5032B729-BC11-36C5-C529-C19B31889C26}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\ContextPayload.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\EditorCamera.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\EditorMainMenu.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorApplication.h" />
+    <ClInclude Include="GUI\EditorWindow.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\WindowFactory.h">
+      <Filter>Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\WindowManager.h">
+      <Filter>Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\Hierarchy.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\Properties.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\Viewport.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\Inspector.h" />
+    <ClInclude Include="Windows\ContentBrowser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\EditorCamera.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\EditorMainMenu.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorApplication.cpp" />
+    <ClCompile Include="GUI\EditorWindow.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\WindowManager.cpp">
+      <Filter>Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Hierarchy.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Properties.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Viewport.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Inspector.cpp" />
+    <ClCompile Include="Windows\ContentBrowser.cpp" />
+  </ItemGroup>
+</Project>

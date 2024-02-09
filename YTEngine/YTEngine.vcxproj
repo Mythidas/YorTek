@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A8FEA689-94CB-0195-BDE4-EF3CA9103723}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>YTEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\bin\Debug-windows-x86_64\YTEngine\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\YTEngine\</IntDir>
+    <TargetName>YTEngine</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\bin\Release-windows-x86_64\YTEngine\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\YTEngine\</IntDir>
+    <TargetName>YTEngine</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <OutDir>..\bin\Dist-windows-x86_64\YTEngine\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\YTEngine\</IntDir>
+    <TargetName>YTEngine</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;YT_PLAT_WINDOWS;YT_DEBUG;YT_ASSERTS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\stb;vendor\glm;vendor\imgui;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;YT_PLAT_WINDOWS;YT_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\stb;vendor\glm;vendor\imgui;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;YT_PLAT_WINDOWS;YT_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\stb;vendor\glm;vendor\imgui;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Platform\OpenGL\OGL_Framebuffer.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_GraphicsContext.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_GraphicsPipeline.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_ImGUIDisplay.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_Image.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_RenderBuffer.h" />
+    <ClInclude Include="include\Platform\OpenGL\OGL_RenderCommands.h" />
+    <ClInclude Include="include\Platform\Windows\W_Window.h" />
+    <ClInclude Include="include\YTEngine.h" />
+    <ClInclude Include="include\YTEngine\Core\Application.h" />
+    <ClInclude Include="include\YTEngine\Core\Defines.h" />
+    <ClInclude Include="include\YTEngine\Core\EntryPoint.h" />
+    <ClInclude Include="include\YTEngine\Core\Event.h" />
+    <ClInclude Include="include\YTEngine\Core\Input.h" />
+    <ClInclude Include="include\YTEngine\Core\KeyCodes.h" />
+    <ClInclude Include="include\YTEngine\Core\Time.h" />
+    <ClInclude Include="include\YTEngine\Core\UUID.h" />
+    <ClInclude Include="include\YTEngine\Core\Window.h" />
+    <ClInclude Include="include\YTEngine\Graphics\Camera.h" />
+    <ClInclude Include="include\YTEngine\Graphics\Framebuffer.h" />
+    <ClInclude Include="include\YTEngine\Graphics\GraphicsContext.h" />
+    <ClInclude Include="include\YTEngine\Graphics\GraphicsPipline.h" />
+    <ClInclude Include="include\YTEngine\Graphics\Image.h" />
+    <ClInclude Include="include\YTEngine\Graphics\RenderBuffer.h" />
+    <ClInclude Include="include\YTEngine\Graphics\RenderCommands.h" />
+    <ClInclude Include="include\YTEngine\Graphics\RenderData.h" />
+    <ClInclude Include="include\YTEngine\Graphics\Renderer.h" />
+    <ClInclude Include="include\YTEngine\ImGUI\ImGUIDisplay.h" />
+    <ClInclude Include="include\YTEngine\Math\Transform.h" />
+    <ClInclude Include="include\YTEngine\Math\Vector3.h" />
+    <ClInclude Include="include\YTEngine\Reflection\ApplicationDomain.h" />
+    <ClInclude Include="include\YTEngine\Reflection\ComponentFactory.h" />
+    <ClInclude Include="include\YTEngine\Reflection\MetaInfo.h" />
+    <ClInclude Include="include\YTEngine\Reflection\ObjectFactory.h" />
+    <ClInclude Include="include\YTEngine\Reflection\Type.h" />
+    <ClInclude Include="include\YTEngine\Scene\ComponentPool.h" />
+    <ClInclude Include="include\YTEngine\Scene\Entity.h" />
+    <ClInclude Include="include\YTEngine\Scene\EntityConstants.h" />
+    <ClInclude Include="include\YTEngine\Scene\Ref.h" />
+    <ClInclude Include="include\YTEngine\Scene\Scene.h" />
+    <ClInclude Include="include\YTEngine\Scene\SceneManager.h" />
+    <ClInclude Include="include\YTEngine\Scene\SceneRegistry.h" />
+    <ClInclude Include="include\YTEngine\Scene\SceneSerializer.h" />
+    <ClInclude Include="include\YTEngine\Scene\SceneView.h" />
+    <ClInclude Include="include\YTEngine\Tools\AutoSingleton.h" />
+    <ClInclude Include="include\YTEngine\Tools\Path.h" />
+    <ClInclude Include="include\YTEngine\Tools\Singleton.h" />
+    <ClInclude Include="include\YTEngine\Tools\Stringf.h" />
+    <ClInclude Include="include\YTEngine\Debug\Debug.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\Event.cpp" />
+    <ClCompile Include="src\Core\Input.cpp" />
+    <ClCompile Include="src\Core\Time.cpp" />
+    <ClCompile Include="src\Core\UUID.cpp" />
+    <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Debug\Debug.cpp" />
+    <ClCompile Include="src\Graphics\Camera.cpp" />
+    <ClCompile Include="src\Graphics\Framebuffer.cpp" />
+    <ClCompile Include="src\Graphics\GraphicsContext.cpp" />
+    <ClCompile Include="src\Graphics\GraphicsPipline.cpp" />
+    <ClCompile Include="src\Graphics\Image.cpp" />
+    <ClCompile Include="src\Graphics\RenderBuffer.cpp" />
+    <ClCompile Include="src\Graphics\RenderCommands.cpp" />
+    <ClCompile Include="src\Graphics\Renderer.cpp" />
+    <ClCompile Include="src\ImGUI\ImGUIDisplay.cpp" />
+    <ClCompile Include="src\Math\Transform.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_Framebuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_GraphicsContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_GraphicsPipeline.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_ImGUIDisplay.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_Image.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_RenderBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OGL_RenderCommands.cpp" />
+    <ClCompile Include="src\Platform\Windows\W_Window.cpp" />
+    <ClCompile Include="src\Reflection\ApplicationDomain.cpp" />
+    <ClCompile Include="src\Scene\Entity.cpp" />
+    <ClCompile Include="src\Scene\Scene.cpp" />
+    <ClCompile Include="src\Scene\SceneManager.cpp" />
+    <ClCompile Include="src\Scene\SceneRegistry.cpp" />
+    <ClCompile Include="src\Tools\Path.cpp" />
+    <ClCompile Include="src\Tools\Stringf.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

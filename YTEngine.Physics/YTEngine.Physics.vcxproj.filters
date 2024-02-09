@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Generated">
+      <UniqueIdentifier>{679F0C62-D3B5-0AF8-1C2D-96198882DB7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\YTEngine">
+      <UniqueIdentifier>{7BAD9FCE-67A6-BE20-90D8-A3A57C309E2C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\YTEngine\Physics">
+      <UniqueIdentifier>{EDFB7677-D920-C6F7-026C-AB87EEEFC415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Generated\EngineImport.h">
+      <Filter>include\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Physics\Rigidbody.h">
+      <Filter>include\YTEngine\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\EngineImport.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

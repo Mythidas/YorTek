@@ -1,3 +1,8 @@
+/.vs
+/bin
+/bin-int
+*.sln
+
 # Prerequisites
 *.d
 
