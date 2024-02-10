@@ -21,7 +21,8 @@ project "Editor"
         "src",
         "%{wks.location}/YTEngine/include",
         "%{IncludeDir.IMGUI}",
-        "%{IncludeDir.GLM}"
+        "%{IncludeDir.GLM}",
+        "%{IncludeDir.SPD}"
     }
 
     links

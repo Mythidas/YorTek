@@ -19,6 +19,9 @@
     <Filter Include="include\YTEngine\Core">
       <UniqueIdentifier>{B376D778-1FE3-9273-E8D6-2AD15402B5DB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\YTEngine\Debug">
+      <UniqueIdentifier>{31A8D293-1DA2-FBE5-060F-92F6F2A76152}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\YTEngine\Graphics">
       <UniqueIdentifier>{1BD099E1-8792-CD6B-D042-5CF83C44A649}</UniqueIdentifier>
     </Filter>
@@ -42,6 +45,9 @@
     </Filter>
     <Filter Include="src\Core">
       <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Debug">
+      <UniqueIdentifier>{63A3C3B2-CF0D-7829-184C-29CF84F5557E}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Graphics">
       <UniqueIdentifier>{0D564864-F9B8-D708-A23E-10BF8E80A38B}</UniqueIdentifier>
@@ -125,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="include\YTEngine\Core\Window.h">
       <Filter>include\YTEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Debug\Log.h">
+      <Filter>include\YTEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="include\YTEngine\Graphics\Camera.h">
       <Filter>include\YTEngine\Graphics</Filter>
@@ -216,7 +225,6 @@
     <ClInclude Include="include\YTEngine\Tools\Stringf.h">
       <Filter>include\YTEngine\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="include\YTEngine\Debug\Debug.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -236,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="src\Core\Window.cpp">
       <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Debug\Log.cpp">
+      <Filter>src\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Camera.cpp">
       <Filter>src\Graphics</Filter>
@@ -312,6 +323,5 @@
     <ClCompile Include="src\Tools\Stringf.cpp">
       <Filter>src\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="src\Debug\Debug.cpp" />
   </ItemGroup>
 </Project>

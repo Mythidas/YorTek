@@ -34,7 +34,13 @@
     <ClInclude Include="Internal\WindowManager.h">
       <Filter>Internal</Filter>
     </ClInclude>
+    <ClInclude Include="Windows\ContentBrowser.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Windows\Hierarchy.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\Inspector.h">
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Windows\Properties.h">
@@ -43,8 +49,6 @@
     <ClInclude Include="Windows\Viewport.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Windows\Inspector.h" />
-    <ClInclude Include="Windows\ContentBrowser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\EditorCamera.cpp">
@@ -60,7 +64,13 @@
     <ClCompile Include="Internal\WindowManager.cpp">
       <Filter>Internal</Filter>
     </ClCompile>
+    <ClCompile Include="Windows\ContentBrowser.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
     <ClCompile Include="Windows\Hierarchy.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Inspector.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Windows\Properties.cpp">
@@ -69,7 +79,5 @@
     <ClCompile Include="Windows\Viewport.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Windows\Inspector.cpp" />
-    <ClCompile Include="Windows\ContentBrowser.cpp" />
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@ namespace Yor::Editor
       SceneManager::getActive()->onUpdate();
     }
 
-    for (auto& iter : Internal::WindowManager::get().GetWindows())
+    for (auto& iter : Internal::WindowManager::get().getWindows())
     {
       iter.second->onUpdate();
     }
@@ -39,7 +39,7 @@ namespace Yor::Editor
   {
     m_mainMenu.onGUI();
 
-    for (auto& iter : Internal::WindowManager::get().GetWindows())
+    for (auto& iter : Internal::WindowManager::get().getWindows())
     {
       iter.second->beginUI();
       iter.second->onGUI();

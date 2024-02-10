@@ -1,5 +1,5 @@
 #include "Platform/OpenGL/OGL_RenderBuffer.h"
-#include "YTEngine/Debug/Debug.h"
+#include "YTEngine/Debug/Log.h"
 
 #include <glad/glad.h>
 
@@ -63,7 +63,7 @@ namespace Yor::OGL
 	{
 		if (size + offset > m_builder.size)
 		{
-			Debug::logError("Size exceeds allocated RenderBuffer!");
+			Log::error("Size exceeds allocated RenderBuffer!");
 			return;
 		}
 

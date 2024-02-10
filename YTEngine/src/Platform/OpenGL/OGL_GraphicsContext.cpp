@@ -1,5 +1,5 @@
 #include "Platform/OpenGL/OGL_GraphicsContext.h"
-#include "YTEngine/Debug/Debug.h"
+#include "YTEngine/Debug/Log.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -13,7 +13,7 @@ namespace Yor::OGL
 	{
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			Debug::logCritical("Failed to load GLAD!");
+			Log::critical("Failed to load GLAD!");
 		}
 	}
 

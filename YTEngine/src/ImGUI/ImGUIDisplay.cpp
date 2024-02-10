@@ -17,17 +17,6 @@ namespace Yor
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 		ImGuiStyle& style = ImGui::GetStyle();
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-		{
-			style.WindowRounding = 0.0f;
-			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-		}
-
-		style.WindowBorderSize = 1.0f;
-		style.FramePadding = ImVec2(5.0f, 4.0f);
-		style.WindowPadding = ImVec2(3.0f, 3.0f);
-		style.WindowMinSize = ImVec2(250.0f, 250.0f);
-		style.FrameRounding = 2.0f;
 		style.WindowMenuButtonPosition = ImGuiDir_None;
 
 		useDarknessTheme();

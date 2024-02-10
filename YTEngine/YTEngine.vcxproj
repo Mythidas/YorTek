@@ -158,6 +158,7 @@
     <ClInclude Include="include\YTEngine\Core\Time.h" />
     <ClInclude Include="include\YTEngine\Core\UUID.h" />
     <ClInclude Include="include\YTEngine\Core\Window.h" />
+    <ClInclude Include="include\YTEngine\Debug\Log.h" />
     <ClInclude Include="include\YTEngine\Graphics\Camera.h" />
     <ClInclude Include="include\YTEngine\Graphics\Framebuffer.h" />
     <ClInclude Include="include\YTEngine\Graphics\GraphicsContext.h" />
@@ -188,7 +189,6 @@
     <ClInclude Include="include\YTEngine\Tools\Path.h" />
     <ClInclude Include="include\YTEngine\Tools\Singleton.h" />
     <ClInclude Include="include\YTEngine\Tools\Stringf.h" />
-    <ClInclude Include="include\YTEngine\Debug\Debug.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
@@ -197,7 +197,7 @@
     <ClCompile Include="src\Core\Time.cpp" />
     <ClCompile Include="src\Core\UUID.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
-    <ClCompile Include="src\Debug\Debug.cpp" />
+    <ClCompile Include="src\Debug\Log.cpp" />
     <ClCompile Include="src\Graphics\Camera.cpp" />
     <ClCompile Include="src\Graphics\Framebuffer.cpp" />
     <ClCompile Include="src\Graphics\GraphicsContext.cpp" />

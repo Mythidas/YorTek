@@ -1,5 +1,5 @@
 #include "Platform/OpenGL/OGL_Framebuffer.h"
-#include "YTEngine/Debug/Debug.h"
+#include "YTEngine/Debug/Log.h"
 
 #include <glad/glad.h>
 
@@ -59,7 +59,7 @@ namespace Yor::OGL
 
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Debug::logError("Framebuffer failed to create!");
+			Log::error("Framebuffer failed to create!");
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);

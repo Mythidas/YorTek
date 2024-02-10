@@ -1,5 +1,5 @@
 #include "Platform/Windows/W_Window.h"
-#include "YTEngine/Debug/Debug.h"
+#include "YTEngine/Debug/Log.h"
 
 namespace Yor::Windows
 {
@@ -8,13 +8,13 @@ namespace Yor::Windows
   {
     if (int glfw = glfwInit(); !glfw)
     {
-			Debug::logCritical("Failed to init GLFW");
+			Log::critical("Failed to init GLFW");
       return;
     }
 
     if (m_window = glfwCreateWindow(builder.width, builder.height, builder.title.c_str(), nullptr, nullptr); !m_window)
     {
-			Debug::logCritical("Failed to create GLFW window!");
+			Log::critical("Failed to create GLFW window!");
       return;
     }
 
@@ -33,7 +33,7 @@ namespace Yor::Windows
 
 		glfwSetErrorCallback([](int error, const char* desc)
 			{
-				Debug::log(desc);
+				Log::error(desc);
 			});
 
 		glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
@@ -83,7 +83,7 @@ namespace Yor::Windows
 					wWindow->OnMouseButtonReleased(button);
 			});
 
-		Debug::log("Window Created!");
+		Log::info("Window Created!");
   }
 
 	W_Window::~W_Window()

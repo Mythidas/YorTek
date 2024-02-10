@@ -1,6 +1,7 @@
 #include "YTEngine/Core/Application.h"
 #include "YTEngine/Core/Time.h"
 #include "YTEngine/Graphics/Renderer.h"
+#include "YTEngine/Debug/Log.h"
 
 namespace Yor
 {
@@ -18,6 +19,8 @@ namespace Yor
     m_imGUI = ImGUIDisplay::Builder().build();
 
     Renderer::_construct();
+
+    Log::info("Application Started!");
   }
 
   void Application::run()

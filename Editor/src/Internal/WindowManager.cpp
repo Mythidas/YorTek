@@ -11,45 +11,83 @@ namespace Yor::Editor::Internal
   WindowManager::WindowManager()
   {
     auto viewport = WindowFactory<Viewport>()
-      .SetWindowName("Viewport")
-      .SetWindowPath("Scene/Viewport")
-      .Register();
+      .setWindowName("Viewport")
+      .setWindowPath("Scene/Viewport")
+      .build();
 
     auto hierarchy = WindowFactory<Hierarchy>()
-      .SetWindowName("Hierarchy")
-      .SetWindowPath("Scene/Hierarchy")
-      .Register();
+      .setWindowName("Hierarchy")
+      .setWindowPath("Scene/Hierarchy")
+      .build();
 
     auto inspector = WindowFactory<Inspector>()
-      .SetWindowName("Inspector")
-      .SetWindowPath("Scene/Inspector")
-      .Register();
+      .setWindowName("Inspector")
+      .setWindowPath("Scene/Inspector")
+      .build();
   }
 
-  void WindowManager::RegisterWindow(WindowMeta meta)
+  void WindowManager::registerWindow(WindowMeta meta)
   {
-    uint64_t hashID = Stringf::hash(meta.Name);
-    m_RegisteredWindows[hashID] = meta;
-    OpenWindow(meta.Name);
+    m_registeredWindows[meta.hashID] = meta;
+    openWindow(meta.name);
   }
 
-  void WindowManager::OpenWindow(const std::string& name)
+  void WindowManager::openWindow(uint64_t id)
   {
-    uint64_t hashID = Stringf::hash(name);
-
-    if (!m_Windows.contains(hashID))
+    if (!m_windows.contains(id))
     {
-      m_Windows[hashID] = m_RegisteredWindows[hashID].CreateWindow();
+      m_windows[id] = m_registeredWindows[id].createWindow();
+    }
+    else
+    {
+      m_windows[id]->setWindowOpen(true);
     }
   }
 
-  void WindowManager::CloseWindow(const std::string& name)
+  void WindowManager::openWindow(const std::string& name)
   {
     uint64_t hashID = Stringf::hash(name);
+    openWindow(hashID);
+  }
 
-    if (m_Windows.contains(hashID))
+  void WindowManager::closeWindow(uint64_t id)
+  {
+    if (m_windows.contains(id))
     {
-      delete m_Windows[hashID];
+      m_windows[id]->setWindowOpen(false);
     }
+  }
+
+  void WindowManager::closeWindow(const std::string& name)
+  {
+    uint64_t hashID = Stringf::hash(name);
+    closeWindow(hashID);
+  }
+
+  void WindowManager::toggleWindow(uint64_t id)
+  {
+    if (m_windows.contains(id))
+    {
+      m_windows[id]->setWindowOpen(!m_windows[id]->getWindowOpen());
+    }
+  }
+
+  void WindowManager::toggleWindow(const std::string& name)
+  {
+    uint64_t hashID = Stringf::hash(name);
+    toggleWindow(hashID);
+  }
+
+  const std::unordered_map<uint64_t, EditorWindow*> WindowManager::getWindows()
+  {
+    std::unordered_map<uint64_t, EditorWindow*> filtered;
+    for (auto& iter : m_windows)
+    {
+      if (iter.second->getWindowOpen())
+      {
+        filtered[iter.first] = iter.second;
+      }
+    }
+    return filtered;
   }
 }

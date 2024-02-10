@@ -1,5 +1,5 @@
 #include "Platform/OpenGL/OGL_Image.h"
-#include "YTEngine/Debug/Debug.h"
+#include "YTEngine/Debug/Log.h"
 
 #include <glad/glad.h>
 #include <stb_image.h>
@@ -132,7 +132,7 @@ namespace Yor::OGL
 		uint32_t imageSize = (m_builder.size.x * m_builder.size.y * m_builder.size.z) * Utils::FormatSize(m_builder.format);
 		if (size != static_cast<size_t>(imageSize))
 		{
-			Debug::logError("Size does not match Image Size!");
+			Log::error("Size does not match Image Size!");
 			return;
 		}
 

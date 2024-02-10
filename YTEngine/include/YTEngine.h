@@ -19,3 +19,6 @@
 // Math
 #include "YTEngine/Math/Transform.h"
 #include "YTEngine/Math/Vector3.h"
+
+// Debug
+#include "YTEngine/Debug/Log.h"
