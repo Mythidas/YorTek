@@ -14,6 +14,7 @@
 // Scene
 #include "YTEngine/Scene/SceneView.h"
 #include "YTEngine/Scene/SceneManager.h"
+#include "YTEngine/Scene/SceneSerializer.h"
 #include "YTEngine/Scene/Entity.h"
 
 // Math

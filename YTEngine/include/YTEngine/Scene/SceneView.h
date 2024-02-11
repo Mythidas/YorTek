@@ -62,11 +62,11 @@ namespace Yor
 				do
 				{
 					index++;
-				} while (index < registry->getEntityCounter() && !IsValidIndex());
+				} while (index < registry->getEntityCounter() && !isValidIndex());
 				return *this;
 			}
 
-			bool IsValidIndex()
+			bool isValidIndex()
 			{
 				if (!registry->isValidEntity(registry->entityAtIndex(index))) return false;
 				return all || mask == (mask & registry->entityAtIndex(index).m_components);

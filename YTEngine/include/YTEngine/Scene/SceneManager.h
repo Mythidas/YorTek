@@ -12,6 +12,7 @@ namespace Yor
     SceneManager();
 
     static Shared<Scene> getActive() { return get().m_activeScene; }
+    static void setActive(Shared<Scene> scene) { get().m_activeScene = scene; }
 
   private:
     Shared<Scene> m_activeScene;

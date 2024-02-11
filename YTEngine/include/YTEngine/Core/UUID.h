@@ -14,7 +14,6 @@ namespace Yor
     UUID(uint64_t uuid);
 
     bool valid() const;
-    uint64_t uint() const;
 
   public:
     bool operator==(const UUID& rhs) const
@@ -25,6 +24,11 @@ namespace Yor
     bool operator!=(const UUID& rhs) const
     {
       return m_uuid != rhs.m_uuid;
+    }
+
+    operator uint64_t() const
+    {
+      return m_uuid;
     }
 
   private:
@@ -39,7 +43,7 @@ namespace std
   {
     size_t operator()(const Yor::UUID& rhs) const
     {
-      return hash<uint64_t>()(uint64_t(rhs.uint()));
+      return hash<uint64_t>()(uint64_t(rhs));
     }
   };
 }

@@ -41,6 +41,7 @@ namespace Yor::Editor
 	{
 		Shared<Scene> scene = SceneManager::getActive();
 
+		ImGui::PushID(entity.getID());
 		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_FramePadding;
 		if (ContextPayload* payload = EditorApplication::getPayload(); payload->isTarget("ENTITY_PAYLOAD"_hs))
 		{
@@ -71,5 +72,6 @@ namespace Yor::Editor
 		{
 			ImGui::TreePop();
 		}
+		ImGui::PopID();
 	}
 }

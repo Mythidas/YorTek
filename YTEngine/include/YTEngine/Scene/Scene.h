@@ -18,6 +18,7 @@ namespace Yor
     bool valid() const;
 
     SceneRegistry& getRegistry() { return m_registry; }
+    const Path& getPath() const { return m_localPath; }
 
   private:
     SceneRegistry m_registry;

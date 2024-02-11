@@ -51,11 +51,30 @@ namespace Yor::Editor
     if (showImGuiDemo)
       ImGui::ShowDemoWindow();
 
+    { // Control App Title
+
+      if (Shared<Scene> scene = SceneManager::getActive(); scene->valid())
+        Application::get().getWindow()->setTitle("YorTek Editor: " + scene->getPath().name());
+      else
+        Application::get().getWindow()->setTitle("YorTek Editor");
+    }
+
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 10.0f, 10.0f });
     if (ImGui::BeginMainMenuBar())
     {
       if (ImGui::BeginMenu("Project"))
       {
+        if (ImGui::MenuItem("New Scene"))
+        {
+          Path path = Path::getDirectoryDialogBox();
+          if (path.exists())
+          {
+            Shared<Scene> newScene = CreateShared<Scene>(path + "/NewScene.ytscene");
+            if (SceneSerializer::save(newScene, newScene->getPath()))
+              SceneManager::setActive(newScene);
+          }
+        }
+
         if (ImGui::MenuItem("Load Scene"))
         {
 
@@ -74,7 +93,12 @@ namespace Yor::Editor
         ImGui::EndMenu();
       }
 
-      _drawWindowMenu();
+      if (ImGui::BeginMenu("Windows"))
+      {
+        _drawWindowMenu();
+
+        ImGui::EndMenu();
+      }
 
       if (ImGui::BeginMenu("Debug"))
       {
@@ -93,14 +117,9 @@ namespace Yor::Editor
   {
     auto entries = Utils::getMenuPath();
   
-    if (ImGui::BeginMenu("Windows"))
+    for (const auto& iter : entries)
     {
-      for (const auto& iter : entries)
-      {
-        _drawWindowMenuItem(entries, iter.first, iter.second);
-      }
-
-      ImGui::EndMenu();
+      _drawWindowMenuItem(entries, iter.first, iter.second);
     }
   }
 

@@ -8,6 +8,8 @@ namespace Yor::Editor
 {
   void Viewport::onGUI()
   {
+    if (!SceneManager::getActive()->valid()) return;
+
     if (ImGui::IsWindowHovered())
     {
       EditorApplication::getCamera().onUpdate();

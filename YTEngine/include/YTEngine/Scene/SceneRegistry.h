@@ -12,13 +12,15 @@ namespace Yor
     SceneRegistry();
     ~SceneRegistry();
 
-    Entity createEntity();
-    Entity createEntity(const std::string& name);
+    Entity createEntity(UUID id = UUID());
+    Entity createEntity(const std::string& name, UUID id = UUID());
 
     void destroyEntity(const UUID& id);
 
     Entity findEntity(const UUID& id) const;
     Entity entityAtIndex(size_t index) const;
+    Entity* findEntityData(const UUID& id);
+    Entity* findEntityData(const UUID& id) const;
     size_t getEntityCounter() const { return m_entityCounter; }
 
   public:

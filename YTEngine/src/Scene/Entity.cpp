@@ -5,12 +5,12 @@
 namespace Yor
 {
 	Entity::Entity()
-		: m_id(UUID::INVALID)
+		: Entity(UUID::INVALID, nullptr)
 	{
 	}
 
 	Entity::Entity(const UUID& id)
-    : m_id(id), m_registry(&SceneManager::getActive()->getRegistry())
+    : Entity(id, &SceneManager::getActive()->getRegistry())
   {
   }
 
@@ -19,9 +19,15 @@ namespace Yor
   {
   }
 
+	void Entity::destroy()
+	{
+		if (!m_registry) return;
+		m_registry->destroyEntity(m_id);
+	}
+
 	bool Entity::isValid() const
 	{
-		return m_registry && m_id != UUID::INVALID;
+		return m_registry && m_registry->isValidEntity(m_id);
 	}
 
 	std::vector<ComponentMeta> Entity::getComponents() const
@@ -54,24 +60,35 @@ namespace Yor
 		m_registry->removeComponent(m_id, component);
 	}
 
-	void Entity::destroy()
-	{
-		if (!m_registry) return;
-		m_registry->destroyEntity(m_id);
-	}
-
-  Entity Entity::create(SceneRegistry* registry)
+	Entity Entity::create(SceneRegistry* registry, UUID id)
   {
 		if (!registry)
 			return SceneManager::getActive()->getRegistry().createEntity();
 		
 		return registry->createEntity();
   }
-  Entity Entity::create(const std::string& name, SceneRegistry* registry)
+
+  Entity Entity::create(const std::string& name, SceneRegistry* registry, UUID id)
   {
 		if (!registry)
 			return SceneManager::getActive()->getRegistry().createEntity(name);
 
 		return registry->createEntity(name);
   }
+
+	Entity* Entity::_getData()
+	{
+		if (isValid())
+			return m_registry->findEntityData(m_id);
+
+		return this;
+	}
+
+	const Entity* Entity::_getData() const
+	{
+		if (isValid())
+			return m_registry->findEntityData(m_id);
+
+		return this;
+	}
 }

@@ -123,6 +123,9 @@
     <ClInclude Include="include\YTEngine\Core\KeyCodes.h">
       <Filter>include\YTEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="include\YTEngine\Core\Project.h">
+      <Filter>include\YTEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="include\YTEngine\Core\Time.h">
       <Filter>include\YTEngine\Core</Filter>
     </ClInclude>
@@ -164,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="include\YTEngine\ImGUI\ImGUIDisplay.h">
       <Filter>include\YTEngine\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Math\Bit.h">
+      <Filter>include\YTEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="include\YTEngine\Math\Transform.h">
       <Filter>include\YTEngine\Math</Filter>
@@ -234,6 +240,9 @@
       <Filter>src\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Input.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Project.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Time.cpp">
@@ -315,6 +324,9 @@
       <Filter>src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\SceneRegistry.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\SceneSerializer.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Tools\Path.cpp">

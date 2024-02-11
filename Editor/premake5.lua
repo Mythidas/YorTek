@@ -22,7 +22,7 @@ project "Editor"
         "%{wks.location}/YTEngine/include",
         "%{IncludeDir.IMGUI}",
         "%{IncludeDir.GLM}",
-        "%{IncludeDir.SPD}"
+        "%{IncludeDir.SPD}",
     }
 
     links

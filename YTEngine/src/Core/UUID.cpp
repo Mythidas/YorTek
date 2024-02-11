@@ -21,9 +21,4 @@ namespace Yor
   {
       return m_uuid != INVALID;
   }
-
-  uint64_t UUID::uint() const
-  {
-    return m_uuid;
-  }
 }

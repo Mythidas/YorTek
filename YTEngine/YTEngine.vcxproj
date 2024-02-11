@@ -155,6 +155,7 @@
     <ClInclude Include="include\YTEngine\Core\Event.h" />
     <ClInclude Include="include\YTEngine\Core\Input.h" />
     <ClInclude Include="include\YTEngine\Core\KeyCodes.h" />
+    <ClInclude Include="include\YTEngine\Core\Project.h" />
     <ClInclude Include="include\YTEngine\Core\Time.h" />
     <ClInclude Include="include\YTEngine\Core\UUID.h" />
     <ClInclude Include="include\YTEngine\Core\Window.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="include\YTEngine\Graphics\RenderData.h" />
     <ClInclude Include="include\YTEngine\Graphics\Renderer.h" />
     <ClInclude Include="include\YTEngine\ImGUI\ImGUIDisplay.h" />
+    <ClInclude Include="include\YTEngine\Math\Bit.h" />
     <ClInclude Include="include\YTEngine\Math\Transform.h" />
     <ClInclude Include="include\YTEngine\Math\Vector3.h" />
     <ClInclude Include="include\YTEngine\Reflection\ApplicationDomain.h" />
@@ -194,6 +196,7 @@
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Event.cpp" />
     <ClCompile Include="src\Core\Input.cpp" />
+    <ClCompile Include="src\Core\Project.cpp" />
     <ClCompile Include="src\Core\Time.cpp" />
     <ClCompile Include="src\Core\UUID.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
@@ -221,6 +224,7 @@
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Scene\SceneManager.cpp" />
     <ClCompile Include="src\Scene\SceneRegistry.cpp" />
+    <ClCompile Include="src\Scene\SceneSerializer.cpp" />
     <ClCompile Include="src\Tools\Path.cpp" />
     <ClCompile Include="src\Tools\Stringf.cpp" />
   </ItemGroup>

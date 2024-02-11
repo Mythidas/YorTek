@@ -2,6 +2,7 @@
 #include "EditorApplication.h"
 
 #include <imgui.h>
+#include <misc/cpp/imgui_stdlib.h>
 
 namespace Yor::Editor
 {
@@ -20,6 +21,13 @@ namespace Yor::Editor
     ContextPayload* payload = EditorApplication::getPayload();
 
     auto entity = Entity(*(UUID*)payload->data);
+
+    bool& _active = entity.getActiveRef();
+    ImGui::Checkbox("##active", &_active);
+    ImGui::SameLine();
+    std::string& _name = entity.getNameRef();
+    ImGui::InputText("##name", &_name);
+    ImGui::Separator();
 
     for (auto& comp : entity.getComponents())
     {

@@ -17,12 +17,18 @@ namespace Yor
 		Entity(const UUID& id);
 		Entity(const UUID& id, SceneRegistry* registry);
 
-		bool getActive() const { return m_active; }
-		std::string getName() const { return m_name; }
-		UUID getID() const { return m_id; }
-		UUID getParentID() const { return m_parent; }
-
+		void destroy();
 		bool isValid() const;
+
+		std::string getName() const { return _getData()->m_name; }
+		bool getActive() const { return _getData()->m_active; }
+		UUID getID() const { return m_id; }
+		UUID getParentID() const { return _getData()->m_parent; }
+		const std::vector<UUID>& getChildren() const { return _getData()->m_children; }
+		std::vector<ComponentMeta> getComponents() const;
+
+		std::string& getNameRef() { return _getData()->m_name; }
+		bool& getActiveRef() { return _getData()->m_active; }
 
 	public:
 		template <typename T>
@@ -52,18 +58,19 @@ namespace Yor
 		bool hasComponent(const TypeID& component) const;
 		void removeComponent(const TypeID& component);
 
-		void destroy();
-		std::vector<ComponentMeta> getComponents() const;
-
 	public:
-		static Entity create(SceneRegistry* registry = nullptr);
-		static Entity create(const std::string& name, SceneRegistry* registry = nullptr);
+		static Entity create(SceneRegistry* registry = nullptr, UUID id = UUID());
+		static Entity create(const std::string& name, SceneRegistry* registry = nullptr, UUID id = UUID());
 
 	public:
 		operator UUID() const
 		{
 			return m_id;
 		}
+
+	private:
+		Entity* _getData();
+		const Entity* _getData() const;
 
 	private:
 		friend class SceneRegistry;
