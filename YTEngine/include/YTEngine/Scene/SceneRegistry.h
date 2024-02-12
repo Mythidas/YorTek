@@ -38,7 +38,7 @@ namespace Yor
     bool hasComponent(const UUID& id, const TypeID& component) const;
     void removeComponent(const UUID& id, const TypeID& component);
 
-    std::vector<ComponentMeta> getComponents(const UUID& id) const;
+    std::vector<ObjectMeta> getComponents(const UUID& id) const;
 
   public:
     template <typename T>
@@ -117,6 +117,6 @@ namespace Yor
   template<typename T>
   inline size_t SceneRegistry::findComponentID() const
   {
-    return findComponentID(type<T>().id());
+    return findComponentID(Type<T>().id());
   }
 }

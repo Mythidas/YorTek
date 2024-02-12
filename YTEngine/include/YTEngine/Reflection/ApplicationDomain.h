@@ -17,12 +17,12 @@ namespace Yor
     const ObjectMeta& findObject(const TypeID& id);
     const std::unordered_map<TypeID, ObjectMeta>& getAllObjects();
 
-    void registerComponent(const ComponentMeta& meta);
-    const ComponentMeta& findComponent(const TypeID& id);
-    const std::unordered_map<TypeID, ComponentMeta>& getAllComponents();
+    void registerComponent(const ObjectMeta& meta);
+    const ObjectMeta& findComponent(const TypeID& id);
+    const std::unordered_map<TypeID, ObjectMeta>& getAllComponents();
 
   private:
     std::unordered_map<TypeID, ObjectMeta> m_registeredObjects;
-    std::unordered_map<TypeID, ComponentMeta> m_registeredComponents;
+    std::unordered_map<TypeID, ObjectMeta> m_registeredComponents;
   };
 }

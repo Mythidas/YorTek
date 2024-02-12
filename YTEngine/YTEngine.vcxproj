@@ -188,6 +188,7 @@
     <ClInclude Include="include\YTEngine\Scene\SceneSerializer.h" />
     <ClInclude Include="include\YTEngine\Scene\SceneView.h" />
     <ClInclude Include="include\YTEngine\Tools\AutoSingleton.h" />
+    <ClInclude Include="include\YTEngine\Tools\Flags.h" />
     <ClInclude Include="include\YTEngine\Tools\Path.h" />
     <ClInclude Include="include\YTEngine\Tools\Singleton.h" />
     <ClInclude Include="include\YTEngine\Tools\Stringf.h" />

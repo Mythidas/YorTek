@@ -40,6 +40,16 @@ namespace Yor
       }
     }
 
+    static void _serializeObject(YAML::Emitter& out, const ObjectMeta& meta, const char* data)
+    {
+      out << YAML::Key << meta.info.debugName << YAML::BeginMap;
+      for (auto& prop : meta.properties)
+      {
+        _serializeProperty(out, data, prop);
+      }
+      out << YAML::EndMap;
+    }
+
     static void _serializeEntity(YAML::Emitter& out, const Entity& entity)
     {
       out << YAML::BeginMap;
@@ -47,7 +57,8 @@ namespace Yor
       out << YAML::Key << "Name" << YAML::Value << entity.getName();
       out << YAML::Key << "Active" << YAML::Value << entity.getActive();
       out << YAML::Key << "Parent" << YAML::Value << entity.getParentID();
-      
+      Transform _transform = entity.getTransform();
+      _serializeObject(out, ApplicationDomain::get().findObject(Type<Transform>().id()), (const char*)&_transform);
       out << YAML::Key << "Children" << YAML::Value << YAML::BeginMap;
       int count = 0;
       for (auto& child : entity.getChildren())
@@ -74,7 +85,7 @@ namespace Yor
       out << YAML::EndMap;
     }
 
-    static void _deserializeProperty(const YAML::Node& in, Shared<Scene> scene, char* data, const PropertyMeta& meta)
+    static void _deserializeProperty(const YAML::Node& in, char* data, const PropertyMeta& meta)
     {
       char* propData = data + meta.offset;
 
@@ -88,7 +99,7 @@ namespace Yor
           if (in[prop.info.debugName])
           {
             YAML::Node propIn = in[prop.info.debugName];
-            _deserializeProperty(propIn, scene, data, prop);
+            _deserializeProperty(propIn, propData, prop);
           }
         }
 
@@ -108,18 +119,47 @@ namespace Yor
       }
     }
 
+    static void _deserializeObject(const YAML::Node& in, char* data, const ObjectMeta& meta)
+    {
+      for (auto& prop : meta.properties)
+      {
+        if (in[prop.info.debugName])
+        {
+          YAML::Node propIn = in[prop.info.debugName];
+          _deserializeProperty(propIn, data, prop);
+        }
+      }
+    }
+
     static void _deserializeEntity(const YAML::Node& in, Shared<Scene> scene)
     {
+      // Load ID & Name
       UUID id = in["ID"].as<uint64_t>();
       std::string name = in["Name"].as<std::string>();
       Entity ent = scene->getRegistry().createEntity(name, id);
+
+      // Load Active & Parent
+      ent.setActive(in["Active"].as<bool>());
+      ent.setParentID(in["Parent"].as<uint64_t>());
+
+      // Load Transform
+      Transform& _transform = ent.getTransformRef();
+      ObjectMeta _transMeta = ApplicationDomain::get().findObject(Type<Transform>().id());
+      _deserializeObject(in[_transMeta.info.debugName], (char*)&_transform, _transMeta);
+
+      // Load Children
+      auto children = in["Children"];
+      for (auto child : children)
+      {
+        ent.addChild(child.as<uint64_t>());
+      }
 
       auto comps = in["Components"];
       if (!comps) return;
 
       for (auto comp : comps)
       {
-        ComponentMeta meta = ApplicationDomain::get().findComponent(comp.first.as<uint64_t>());
+        ObjectMeta meta = ApplicationDomain::get().findComponent(comp.first.as<uint64_t>());
         char* data = (char*)ent.addComponent(meta.info.id);
         if (!data) continue;
 
@@ -129,7 +169,7 @@ namespace Yor
           if (compIn[prop.info.debugName])
           {
             YAML::Node propIn = compIn[prop.info.debugName];
-            _deserializeProperty(propIn, scene, data, prop);
+            _deserializeProperty(propIn, data, prop);
           }
         }
       }

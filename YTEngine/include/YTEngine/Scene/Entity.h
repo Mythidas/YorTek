@@ -19,6 +19,8 @@ namespace Yor
 
 		void destroy();
 		bool isValid() const;
+		void addChild(const UUID& id);
+		void removeChild(const UUID& id);
 
 		std::string getName() const { return _getData()->m_name; }
 		bool getActive() const { return _getData()->m_active; }
@@ -26,11 +28,12 @@ namespace Yor
 		UUID getID() const { return m_id; }
 		UUID getParentID() const { return _getData()->m_parent; }
 		const std::vector<UUID>& getChildren() const { return _getData()->m_children; }
-		std::vector<ComponentMeta> getComponents() const;
+		std::vector<ObjectMeta> getComponents() const;
 
 		void setName(const std::string& name) { _getData()->m_name = name; }
 		void setActive(bool active) { _getData()->m_active = active; }
 		void setTransform(const Transform& transform) { _getData()->m_transform = transform; }
+		void setParentID(const UUID& id) { if (id == m_id) return; _getData()->m_parent = id; }
 
 		std::string& getNameRef() { return _getData()->m_name; }
 		bool& getActiveRef() { return _getData()->m_active; }
@@ -40,23 +43,23 @@ namespace Yor
 		template <typename T>
 		T* addComponent()
 		{
-			return static_cast<T*>(addComponent(type<T>().id()));
+			return static_cast<T*>(addComponent(Type<T>().id()));
 		}
 
 		template <typename T>
 		T* getComponent() const
 		{
-			return static_cast<T*>(getComponent(type<T>().id()));
+			return static_cast<T*>(getComponent(Type<T>().id()));
 		}
 		template <typename T>
 		bool hasComponent() const
 		{
-			return hasComponent(type<T>().id());
+			return hasComponent(Type<T>().id());
 		}
 		template <typename T>
 		void removeComponent()
 		{
-			removeComponent(type<T>().id());
+			removeComponent(Type<T>().id());
 		}
 
 		void* addComponent(const TypeID& component);
@@ -82,6 +85,7 @@ namespace Yor
 		friend class SceneRegistry;
 		template <typename ...Components>
 		friend class SceneView;
+		friend class SceneSerializer;
 
 	private:
 		std::string m_name{""};

@@ -5,7 +5,7 @@
 
 namespace Yor::Editor
 {
-  void Controls::Vector3(const std::string& label, glm::vec3& vec3)
+  void Controls::DrawVector3(const std::string& label, Vector3& vec3)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		auto boldFont = io.Fonts->Fonts[0];

@@ -17,7 +17,7 @@ namespace Yor
 			if constexpr (std::is_member_object_pointer_v<decltype(data)>)
 			{
 				using data_type = std::remove_reference_t<std::invoke_result_t<decltype(data), T&>>;
-				type<data_type> type;
+				Type<data_type> type;
 				if (type.ref() != TypeRef::Unknown)
 				{
 					MetaInfo meta(name, name, type.id());
@@ -28,12 +28,12 @@ namespace Yor
 			return *this;
 		}
 
-		inline ComponentMeta build(ApplicationDomain* domain)
+		inline ObjectMeta build(ApplicationDomain* domain)
 		{
-			ComponentMeta meta;
-			meta.info.name = type<T>().name();
-			meta.info.debugName = type<T>().debugName();
-			meta.info.id = type<T>().id();
+			ObjectMeta meta;
+			meta.info.name = Type<T>().name();
+			meta.info.debugName = Type<T>().debugName();
+			meta.info.id = Type<T>().id();
 			meta.info.size = sizeof(T);
 			meta.properties = m_properties;
 			domain->registerComponent(meta);

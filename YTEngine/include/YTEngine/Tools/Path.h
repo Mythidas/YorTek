@@ -1,12 +1,24 @@
 #pragma once
 
 #include "YTEngine/Core/Defines.h"
+#include "YTEngine/Tools/Flags.h"
 
 #include <filesystem>
 
 namespace Yor
 {
   namespace FS = std::filesystem;
+
+  enum class FileDialogFilters
+  {
+    Project,
+    Scene,
+    Text,
+    JPG,
+    PNG
+  };
+
+  YT_FLAG_OPERATORS(FileDialogFilters)
 
   class Path
   {
@@ -33,6 +45,7 @@ namespace Yor
 
   public:
     static Path getDirectoryDialogBox();
+    static Path getFileDialogBox(const FileDialogFilters& filters);
 
   private:
     FS::path m_path;

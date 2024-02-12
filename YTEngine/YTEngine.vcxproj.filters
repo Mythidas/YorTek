@@ -222,6 +222,9 @@
     <ClInclude Include="include\YTEngine\Tools\AutoSingleton.h">
       <Filter>include\YTEngine\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="include\YTEngine\Tools\Flags.h">
+      <Filter>include\YTEngine\Tools</Filter>
+    </ClInclude>
     <ClInclude Include="include\YTEngine\Tools\Path.h">
       <Filter>include\YTEngine\Tools</Filter>
     </ClInclude>

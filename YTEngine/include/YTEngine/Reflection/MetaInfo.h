@@ -27,10 +27,4 @@ namespace Yor
     MetaInfo info;
     std::vector<PropertyMeta> properties;
   };
-
-  struct ComponentMeta
-  {
-    MetaInfo info;
-    std::vector<PropertyMeta> properties;
-  };
 }

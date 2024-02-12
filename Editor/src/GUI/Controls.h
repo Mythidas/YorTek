@@ -1,6 +1,7 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <YTEngine/Math/Vector3.h>
+
 #include <string>
 
 namespace Yor::Editor
@@ -8,6 +9,6 @@ namespace Yor::Editor
   class Controls
   {
   public:
-    static void Vector3(const std::string& label, glm::vec3& vec3);
+    static void DrawVector3(const std::string& label, Vector3& vec3);
   };
 }

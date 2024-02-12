@@ -30,9 +30,19 @@ namespace Yor
 		return m_registry && m_registry->isValidEntity(m_id);
 	}
 
-	std::vector<ComponentMeta> Entity::getComponents() const
+	void Entity::addChild(const UUID& id)
 	{
-		if (!m_registry) return std::vector<ComponentMeta>();
+		_getData()->m_children.push_back(id);
+	}
+
+	void Entity::removeChild(const UUID& id)
+	{
+		// TODO: Implement Remove
+	}
+
+	std::vector<ObjectMeta> Entity::getComponents() const
+	{
+		if (!m_registry) return std::vector<ObjectMeta>();
 		return m_registry->getComponents(m_id);
 	}
 

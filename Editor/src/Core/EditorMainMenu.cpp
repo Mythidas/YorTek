@@ -77,12 +77,22 @@ namespace Yor::Editor
 
         if (ImGui::MenuItem("Load Scene"))
         {
-
+          Path path = Path::getFileDialogBox(FileDialogFilters::Scene);
+          if (path.isFile() && path.exists())
+          {
+            Shared<Scene> loadScene = CreateShared<Scene>(path);
+            if (SceneSerializer::load(loadScene, path))
+              SceneManager::setActive(loadScene);
+          }
         }
 
         if (ImGui::MenuItem("Save Scene"))
         {
-          
+          Shared<Scene> saveScene = SceneManager::getActive();
+          if (SceneSerializer::save(saveScene, saveScene->getPath()))
+            Log::info("Saved scene: {0}", saveScene->getPath().toString());
+          else
+            Log::info("Failed to save scene: {0}", saveScene->getPath().toString());
         }
 
         ImGui::EndMenu();

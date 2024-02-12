@@ -131,11 +131,11 @@ namespace Yor
     m_entities[m_entityIndices[id]].m_components.reset(compID);
   }
 
-  std::vector<ComponentMeta> SceneRegistry::getComponents(const UUID& id) const
+  std::vector<ObjectMeta> SceneRegistry::getComponents(const UUID& id) const
   {
-    if (!isValidEntity(id)) return std::vector<ComponentMeta>();
+    if (!isValidEntity(id)) return std::vector<ObjectMeta>();
 
-    std::vector<ComponentMeta> components;
+    std::vector<ObjectMeta> components;
     for (size_t i = 0; i < m_componentPools.size(); i++)
     {
       if (m_entities[m_entityIndices.at(id)].m_components.test(i))

@@ -56,11 +56,11 @@ namespace Yor::Editor
       {
         ImGui::Separator();
         Transform& _transform = entity.getTransformRef();
-        Controls::Vector3("Position", _transform.position);
+        Controls::DrawVector3("Position", _transform.position);
         ImGui::Spacing();
-        Controls::Vector3("Rotation", _transform.rotation);
+        Controls::DrawVector3("Rotation", _transform.rotation);
         ImGui::Spacing();
-        Controls::Vector3("Scale", _transform.scale);
+        Controls::DrawVector3("Scale", _transform.scale);
 
         ImGui::Spacing();
         ImGui::TreePop();

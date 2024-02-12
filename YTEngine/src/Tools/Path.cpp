@@ -7,6 +7,20 @@
 
 namespace Yor
 {
+  namespace Utils
+  {
+    static std::vector<COMDLG_FILTERSPEC> getFilterSpec(const Yor::FileDialogFilters& filters)
+    {
+      // TODO: Add more specs filters
+      std::vector<COMDLG_FILTERSPEC> specs;
+      if (filters & FileDialogFilters::Project)
+        specs.push_back({ L"Project Files (*.ytproj)", L"*.ytproj" });
+      if (filters & FileDialogFilters::Scene)
+        specs.push_back({ L"Scene Files (*.ytscene)", L"*.ytscene" });
+      return specs;
+    }
+  }
+
   Path::Path(const char* path)
     : m_path(path)
   {
@@ -73,6 +87,47 @@ namespace Yor
       if (SUCCEEDED(result))
       {
         result = pFileOpen->SetOptions(FOS_PICKFOLDERS);
+        if (SUCCEEDED(result))
+        {
+          result = pFileOpen->Show(NULL);
+
+          if (SUCCEEDED(result))
+          {
+            IShellItem* pItem;
+            result = pFileOpen->GetResult(&pItem);
+            if (SUCCEEDED(result))
+            {
+              PWSTR pszFilePath;
+              result = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
+              if (SUCCEEDED(result))
+              {
+                path = pszFilePath;
+                CoTaskMemFree(pszFilePath);
+              }
+              pItem->Release();
+            }
+            pFileOpen->Release();
+          }
+          CoUninitialize();
+        }
+      }
+    }
+
+    return path;
+  }
+
+  Path Path::getFileDialogBox(const FileDialogFilters& filters)
+  {
+    FS::path path;
+    HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+    if (SUCCEEDED(result))
+    {
+      IFileOpenDialog* pFileOpen;
+      result = CoCreateInstance(CLSID_FileOpenDialog, NULL, CLSCTX_ALL, IID_IFileOpenDialog, reinterpret_cast<void**>(&pFileOpen));
+      if (SUCCEEDED(result))
+      {
+        auto filterData = Utils::getFilterSpec(filters);
+        result = pFileOpen->SetFileTypes(filterData.size(), filterData.data());
         if (SUCCEEDED(result))
         {
           result = pFileOpen->Show(NULL);

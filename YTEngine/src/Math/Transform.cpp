@@ -16,11 +16,11 @@ namespace Yor
 
   glm::mat4 Transform::getMatrix() const
   {
-    return glm::translate(glm::mat4(1.0f), position)
+    return glm::translate(glm::mat4(1.0f), (glm::vec3)position)
       * glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f))
       * glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f))
       * glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f))
-      * glm::scale(glm::mat4(1.0f), scale);
+      * glm::scale(glm::mat4(1.0f), (glm::vec3)scale);
   }
 
   glm::mat4 Transform::getInverseMatrix() const
@@ -28,32 +28,32 @@ namespace Yor
     return glm::inverse(getMatrix());
   }
 
-  glm::vec3 Transform::forward() const
+  Vector3 Transform::forward() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::forward);
   }
 
-  glm::vec3 Transform::back() const
+  Vector3 Transform::back() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::back);
   }
 
-  glm::vec3 Transform::right() const
+  Vector3 Transform::right() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::right);
   }
 
-  glm::vec3 Transform::left() const
+  Vector3 Transform::left() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::left);
   }
 
-  glm::vec3 Transform::up() const
+  Vector3 Transform::up() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::up);
   }
 
-  glm::vec3 Transform::down() const
+  Vector3 Transform::down() const
   {
     return glm::rotate(Utils::GetOrientation(rotation), Vector3::down);
   }

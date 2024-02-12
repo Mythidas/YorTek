@@ -33,7 +33,7 @@ namespace Yor
 	};
 
 	template<typename T>
-	class type
+	class Type
 	{
 	public:
 		std::string name() const
