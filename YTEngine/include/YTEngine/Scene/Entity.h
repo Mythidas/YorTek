@@ -22,13 +22,19 @@ namespace Yor
 
 		std::string getName() const { return _getData()->m_name; }
 		bool getActive() const { return _getData()->m_active; }
+		Transform getTransform() const { return _getData()->m_transform; }
 		UUID getID() const { return m_id; }
 		UUID getParentID() const { return _getData()->m_parent; }
 		const std::vector<UUID>& getChildren() const { return _getData()->m_children; }
 		std::vector<ComponentMeta> getComponents() const;
 
+		void setName(const std::string& name) { _getData()->m_name = name; }
+		void setActive(bool active) { _getData()->m_active = active; }
+		void setTransform(const Transform& transform) { _getData()->m_transform = transform; }
+
 		std::string& getNameRef() { return _getData()->m_name; }
 		bool& getActiveRef() { return _getData()->m_active; }
+		Transform& getTransformRef() { return _getData()->m_transform; }
 
 	public:
 		template <typename T>

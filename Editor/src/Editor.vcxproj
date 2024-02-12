@@ -138,6 +138,7 @@
     <ClInclude Include="Core\EditorCamera.h" />
     <ClInclude Include="Core\EditorMainMenu.h" />
     <ClInclude Include="EditorApplication.h" />
+    <ClInclude Include="GUI\Controls.h" />
     <ClInclude Include="GUI\EditorWindow.h" />
     <ClInclude Include="Internal\WindowFactory.h" />
     <ClInclude Include="Internal\WindowManager.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Core\EditorCamera.cpp" />
     <ClCompile Include="Core\EditorMainMenu.cpp" />
     <ClCompile Include="EditorApplication.cpp" />
+    <ClCompile Include="GUI\Controls.cpp" />
     <ClCompile Include="GUI\EditorWindow.cpp" />
     <ClCompile Include="Internal\WindowManager.cpp" />
     <ClCompile Include="Windows\ContentBrowser.cpp" />

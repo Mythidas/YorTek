@@ -10,7 +10,6 @@ namespace Yor::Editor
   EditorApplication::EditorApplication()
     : Application({ ApplicationBackend::OpenGL })
   {
-
   }
 
   void EditorApplication::onStart()
