@@ -116,7 +116,7 @@ namespace Yor
     return path;
   }
 
-  Path Path::getFileDialogBox(const FileDialogFilters& filters)
+  Path Path::getFileOpenDialogBox(const FileDialogFilters& filters)
   {
     FS::path path;
     HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
@@ -144,6 +144,55 @@ namespace Yor
               {
                 path = pszFilePath;
                 CoTaskMemFree(pszFilePath);
+              }
+              pItem->Release();
+            }
+            pFileOpen->Release();
+          }
+          CoUninitialize();
+        }
+      }
+    }
+
+    return path;
+  }
+
+  Path Path::getFileSaveDialogBox(const FileDialogFilters& filters)
+  {
+    FS::path path;
+    HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+    if (SUCCEEDED(result))
+    {
+      IFileSaveDialog* pFileOpen;
+      result = CoCreateInstance(CLSID_FileSaveDialog, NULL, CLSCTX_ALL, IID_IFileSaveDialog, reinterpret_cast<void**>(&pFileOpen));
+      if (SUCCEEDED(result))
+      {
+        auto filterData = Utils::getFilterSpec(filters);
+        result = pFileOpen->SetFileTypes(filterData.size(), filterData.data());
+        if (SUCCEEDED(result))
+        {
+          result = pFileOpen->Show(NULL);
+          if (SUCCEEDED(result))
+          {
+            IShellItem* pItem;
+            result = pFileOpen->GetResult(&pItem);
+            if (SUCCEEDED(result))
+            {
+              PWSTR pszFilePath;
+              result = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
+              if (SUCCEEDED(result))
+              {
+                UINT fileTypeIndex;
+                result = pFileOpen->GetFileTypeIndex(&fileTypeIndex);
+                if (SUCCEEDED(result))
+                {
+                  // TODO: This isn't intelligent and doesn't account for the user typing out the extension
+                  path = pszFilePath;
+                  std::wstring ext(filterData[fileTypeIndex - 1].pszSpec);
+                  path += ext.substr(1);
+                  CoTaskMemFree(pszFilePath);
+                }
+
               }
               pItem->Release();
             }

@@ -45,7 +45,8 @@ namespace Yor
 
   public:
     static Path getDirectoryDialogBox();
-    static Path getFileDialogBox(const FileDialogFilters& filters);
+    static Path getFileOpenDialogBox(const FileDialogFilters& filters);
+    static Path getFileSaveDialogBox(const FileDialogFilters& filters);
 
   private:
     FS::path m_path;

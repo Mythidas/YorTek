@@ -38,6 +38,7 @@ namespace Yor::Editor
   {
     m_mainMenu.onGUI();
 
+    if (!SceneManager::getActive()->valid()) return;
     for (auto& iter : Internal::WindowManager::get().getWindows())
     {
       iter.second->beginUI();

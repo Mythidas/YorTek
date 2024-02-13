@@ -56,7 +56,7 @@ namespace Yor::Editor
       if (Shared<Scene> scene = SceneManager::getActive(); scene->valid())
         Application::get().getWindow()->setTitle("YorTek Editor: " + scene->getPath().name());
       else
-        Application::get().getWindow()->setTitle("YorTek Editor");
+        Application::get().getWindow()->setTitle("YorTek Editor: Load a Scene");
     }
 
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 10.0f, 10.0f });
@@ -66,10 +66,11 @@ namespace Yor::Editor
       {
         if (ImGui::MenuItem("New Scene"))
         {
-          Path path = Path::getDirectoryDialogBox();
-          if (path.exists())
+          // TODO: Allow user to make new file with popup instead of forcing NewScene
+          Path path = Path::getFileSaveDialogBox(FileDialogFilters::Scene);
+          if (path.isFile())
           {
-            Shared<Scene> newScene = CreateShared<Scene>(path + "/NewScene.ytscene");
+            Shared<Scene> newScene = CreateShared<Scene>(path);
             if (SceneSerializer::save(newScene, newScene->getPath()))
               SceneManager::setActive(newScene);
           }
@@ -77,7 +78,7 @@ namespace Yor::Editor
 
         if (ImGui::MenuItem("Load Scene"))
         {
-          Path path = Path::getFileDialogBox(FileDialogFilters::Scene);
+          Path path = Path::getFileOpenDialogBox(FileDialogFilters::Scene);
           if (path.isFile() && path.exists())
           {
             Shared<Scene> loadScene = CreateShared<Scene>(path);

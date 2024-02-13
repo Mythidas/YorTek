@@ -26,8 +26,6 @@ namespace Yor
 
   Entity SceneRegistry::createEntity(const std::string& name, UUID id)
   {
-    Log::info("New Entity Created! ID: {0}", id);
-
     if (!m_freeIndices.empty())
     {
       size_t oldIndex = m_freeIndices.back();

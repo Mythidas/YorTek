@@ -96,6 +96,7 @@ namespace Yor
 		style.ItemSpacing = ImVec2(6.00f, 6.00f);
 		style.ItemInnerSpacing = ImVec2(6.00f, 6.00f);
 		style.TouchExtraPadding = ImVec2(0.00f, 0.00f);
+		style.WindowMinSize = ImVec2(300.0f, 300.0f);
 		style.IndentSpacing = 16;
 		style.ScrollbarSize = 12;
 		style.GrabMinSize = 12;
