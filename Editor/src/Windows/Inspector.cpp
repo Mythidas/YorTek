@@ -136,7 +136,7 @@ namespace Yor::Editor
   {
     if (meta.ref == TypeRef::Object)
     {
-      auto& object = ApplicationDomain::get().findComponent(meta.info.id);
+      auto& object = ApplicationDomain::get().findObject(meta.info.id);
 
       for (auto& prop : object.properties)
       {

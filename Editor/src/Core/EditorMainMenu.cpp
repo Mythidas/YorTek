@@ -67,7 +67,7 @@ namespace Yor::Editor
         if (ImGui::MenuItem("New Scene"))
         {
           // TODO: Allow user to make new file with popup instead of forcing NewScene
-          Path path = Path::getFileSaveDialogBox(FileDialogFilters::Scene);
+          Path path = Path::getFileSaveDialogBox(FileExtensionFilters::Scene);
           if (path.isFile())
           {
             Shared<Scene> newScene = CreateShared<Scene>(path);
@@ -78,7 +78,7 @@ namespace Yor::Editor
 
         if (ImGui::MenuItem("Load Scene"))
         {
-          Path path = Path::getFileOpenDialogBox(FileDialogFilters::Scene);
+          Path path = Path::getFileOpenDialogBox(FileExtensionFilters::Scene);
           if (path.isFile() && path.exists())
           {
             Shared<Scene> loadScene = CreateShared<Scene>(path);

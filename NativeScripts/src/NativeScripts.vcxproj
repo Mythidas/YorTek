@@ -149,13 +149,6 @@ IF EXIST ..\..\bin\Dist-windows-x86_64\NativeScripts\NativeScripts.dll\ (xcopy /
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Generated\EngineImport.h" />
-    <ClInclude Include="NativeComponent.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Generated\EngineImport.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\YTEngine\YTEngine.vcxproj">
       <Project>{A8FEA689-94CB-0195-BDE4-EF3CA9103723}</Project>
     </ProjectReference>

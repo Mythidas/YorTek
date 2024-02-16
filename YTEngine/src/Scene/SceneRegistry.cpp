@@ -81,19 +81,10 @@ namespace Yor
   void* SceneRegistry::addComponent(const UUID& id, const TypeID& component)
   {
     if (!isValidEntity(id)) return nullptr;
+    ApplicationDomain::get().callComponentAdd(component, this, id);
 
     size_t compID = findComponentID(component);
     if (compID > MAX_COMPONENTS) return nullptr;
-
-    if (m_entities[m_entityIndices[id]].m_components.test(compID))
-      return m_componentPools[compID]->getData(m_entityIndices[id]);
-
-    if (compID >= m_componentPools.size())
-    {
-      m_componentPools.push_back(new ComponentPool(component, ApplicationDomain::get().findComponent(component).info.size));
-    }
-
-    m_entities[m_entityIndices[id]].m_components.set(compID);
     return m_componentPools[compID]->getData(m_entityIndices[id]);
   }
 

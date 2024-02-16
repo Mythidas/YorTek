@@ -9,15 +9,21 @@ namespace Yor
 {
   namespace Utils
   {
-    static std::vector<COMDLG_FILTERSPEC> getFilterSpec(const Yor::FileDialogFilters& filters)
+    static std::vector<COMDLG_FILTERSPEC> getFilterSpec(const Yor::FileExtensionFilters& filters)
     {
       // TODO: Add more specs filters
       std::vector<COMDLG_FILTERSPEC> specs;
-      if (filters & FileDialogFilters::Project)
+      if (filters & FileExtensionFilters::Project)
         specs.push_back({ L"Project Files (*.ytproj)", L"*.ytproj" });
-      if (filters & FileDialogFilters::Scene)
+      if (filters & FileExtensionFilters::Scene)
         specs.push_back({ L"Scene Files (*.ytscene)", L"*.ytscene" });
       return specs;
+    }
+
+    static bool isValidExtension(const Path& path, const Yor::FileExtensionFilters& filter)
+    {
+      if (filter & FileExtensionFilters::Any) return true;
+      if (filter & FileExtensionFilters::DLL) return path.extension() == ".dll";
     }
   }
 
@@ -65,6 +71,17 @@ namespace Yor
     }
   }
 
+  std::vector<Path> Path::getFilesInDir(const FileExtensionFilters& filter)
+  {
+    std::vector<Path> files;
+    for (auto& path : FS::directory_iterator(m_path))
+    {
+      if (Utils::isValidExtension(Path(path), filter))
+        files.push_back(Path(path));
+    }
+    return files;
+  }
+
   bool Path::exists() const
   {
     return FS::exists(m_path);
@@ -73,6 +90,11 @@ namespace Yor
   bool Path::isFile() const
   {
     return !FS::is_directory(m_path);
+  }
+
+  Path Path::getCurrentDir()
+  {
+    return FS::current_path();
   }
 
   Path Path::getDirectoryDialogBox()
@@ -116,7 +138,7 @@ namespace Yor
     return path;
   }
 
-  Path Path::getFileOpenDialogBox(const FileDialogFilters& filters)
+  Path Path::getFileOpenDialogBox(const FileExtensionFilters& filters)
   {
     FS::path path;
     HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
@@ -157,7 +179,7 @@ namespace Yor
     return path;
   }
 
-  Path Path::getFileSaveDialogBox(const FileDialogFilters& filters)
+  Path Path::getFileSaveDialogBox(const FileExtensionFilters& filters)
   {
     FS::path path;
     HRESULT result = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);

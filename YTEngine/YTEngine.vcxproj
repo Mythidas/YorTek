@@ -161,6 +161,7 @@
     <ClInclude Include="include\YTEngine\Core\Window.h" />
     <ClInclude Include="include\YTEngine\Debug\Log.h" />
     <ClInclude Include="include\YTEngine\Graphics\Camera.h" />
+    <ClInclude Include="include\YTEngine\Graphics\Color.h" />
     <ClInclude Include="include\YTEngine\Graphics\Framebuffer.h" />
     <ClInclude Include="include\YTEngine\Graphics\GraphicsContext.h" />
     <ClInclude Include="include\YTEngine\Graphics\GraphicsPipline.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="include\YTEngine\Math\Bit.h" />
     <ClInclude Include="include\YTEngine\Math\Transform.h" />
     <ClInclude Include="include\YTEngine\Math\Vector3.h" />
+    <ClInclude Include="include\YTEngine\Math\Vector4.h" />
     <ClInclude Include="include\YTEngine\Reflection\ApplicationDomain.h" />
     <ClInclude Include="include\YTEngine\Reflection\ComponentFactory.h" />
     <ClInclude Include="include\YTEngine\Reflection\MetaInfo.h" />
@@ -187,6 +189,8 @@
     <ClInclude Include="include\YTEngine\Scene\SceneRegistry.h" />
     <ClInclude Include="include\YTEngine\Scene\SceneSerializer.h" />
     <ClInclude Include="include\YTEngine\Scene\SceneView.h" />
+    <ClInclude Include="include\YTEngine\Scripting\DLLSource.h" />
+    <ClInclude Include="include\YTEngine\Scripting\ScriptLoader.h" />
     <ClInclude Include="include\YTEngine\Tools\AutoSingleton.h" />
     <ClInclude Include="include\YTEngine\Tools\Flags.h" />
     <ClInclude Include="include\YTEngine\Tools\Path.h" />
@@ -226,6 +230,8 @@
     <ClCompile Include="src\Scene\SceneManager.cpp" />
     <ClCompile Include="src\Scene\SceneRegistry.cpp" />
     <ClCompile Include="src\Scene\SceneSerializer.cpp" />
+    <ClCompile Include="src\Scripting\DLLSource.cpp" />
+    <ClCompile Include="src\Scripting\ScriptLoader.cpp" />
     <ClCompile Include="src\Tools\Path.cpp" />
     <ClCompile Include="src\Tools\Stringf.cpp" />
   </ItemGroup>

@@ -22,7 +22,7 @@ group ""
 
 group "Core"
     include "YTEngine"
-    include "YTEngine.Physics"
+    include "YTEngine.Rendering"
 group ""
 
 group "Executables"

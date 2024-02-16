@@ -5,15 +5,4 @@
       <UniqueIdentifier>{3416FE7D-A080-B2F4-E9BE-639A55689049}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Generated\EngineImport.h">
-      <Filter>Generated</Filter>
-    </ClInclude>
-    <ClInclude Include="NativeComponent.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Generated\EngineImport.cpp">
-      <Filter>Generated</Filter>
-    </ClCompile>
-  </ItemGroup>
 </Project>

@@ -5,23 +5,13 @@
 
 #include "YTEngine/Math/Vector3.h"
 #include "YTEngine/Math/Transform.h"
-
-struct TestComp1 : public Yor::Component
-{
-  float ImplFloat;
-  int ImplInt;
-};
-
-struct TestComp2 : public Yor::Component
-{
-  short ImplShort;
-  unsigned long long ImplUInt64;
-};
+#include "YTEngine/Graphics/Color.h"
 
 namespace Yor
 {
   ApplicationDomain::ApplicationDomain()
   {
+    // Math
     auto vec3 = ObjectFactory<Vector3>()
       .data<&Vector3::x>("X", offsetof(Vector3, x))
       .data<&Vector3::y>("Y", offsetof(Vector3, y))
@@ -42,6 +32,13 @@ namespace Yor
       .data<&Transform::rotation>("Rotation", offsetof(Transform, rotation))
       .data<&Transform::scale>("Scale", offsetof(Transform, scale))
       .build(this);
+
+    // Graphics
+    auto color = ObjectFactory<Color>()
+      .data<&Color::r>("R", offsetof(Color, r))
+      .data<&Color::g>("G", offsetof(Color, g))
+      .data<&Color::b>("B", offsetof(Color, b))
+      .build(this);
   }
 
   void ApplicationDomain::registerObject(const ObjectMeta& meta)
@@ -59,9 +56,10 @@ namespace Yor
     return m_registeredObjects;
   }
 
-  void ApplicationDomain::registerComponent(const ObjectMeta& meta)
+  void ApplicationDomain::registerComponent(const ObjectMeta& meta, CompAdd func)
   {
     m_registeredComponents[meta.info.id] = meta;
+    m_registeredComponentFuncs[meta.info.id] = func;
   }
 
   const ObjectMeta& ApplicationDomain::findComponent(const TypeID& id)
@@ -72,5 +70,10 @@ namespace Yor
   const std::unordered_map<TypeID, ObjectMeta>& ApplicationDomain::getAllComponents()
   {
     return m_registeredComponents;
+  }
+
+  void ApplicationDomain::callComponentAdd(const TypeID& id, SceneRegistry* registry, unsigned long long uuid)
+  {
+    m_registeredComponentFuncs[id](registry, uuid);
   }
 }

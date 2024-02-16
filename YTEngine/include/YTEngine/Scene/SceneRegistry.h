@@ -71,7 +71,7 @@ namespace Yor
 
     if (compID >= m_componentPools.size())
     {
-      m_componentPools.push_back(new ComponentPool(type<T>().id(), sizeof(T)));
+      m_componentPools.push_back(new ComponentPool(Type<T>().id(), sizeof(T)));
     }
 
     T* component = new (m_componentPools[compID]->getData(m_entityIndices[id])) T();

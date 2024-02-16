@@ -37,6 +37,9 @@
     <Filter Include="include\YTEngine\Scene">
       <UniqueIdentifier>{D80AE194-C404-0AE7-AD71-A0F7990A7053}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\YTEngine\Scripting">
+      <UniqueIdentifier>{3D78AEBF-2988-5A90-9241-BFAE7E704929}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\YTEngine\Tools">
       <UniqueIdentifier>{3BE2F994-27DC-22E7-1049-B9F7FCE18853}</UniqueIdentifier>
     </Filter>
@@ -72,6 +75,9 @@
     </Filter>
     <Filter Include="src\Scene">
       <UniqueIdentifier>{0A06D2B3-7670-862A-BFAE-37D02B58647F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scripting">
+      <UniqueIdentifier>{6FBC2D98-DB7C-A9CE-A4B7-F24B1037EEAA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Tools">
       <UniqueIdentifier>{6DDDEAB3-D947-9F2A-2286-50D08E2F7D7F}</UniqueIdentifier>
@@ -141,6 +147,9 @@
     <ClInclude Include="include\YTEngine\Graphics\Camera.h">
       <Filter>include\YTEngine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="include\YTEngine\Graphics\Color.h">
+      <Filter>include\YTEngine\Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="include\YTEngine\Graphics\Framebuffer.h">
       <Filter>include\YTEngine\Graphics</Filter>
     </ClInclude>
@@ -175,6 +184,9 @@
       <Filter>include\YTEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="include\YTEngine\Math\Vector3.h">
+      <Filter>include\YTEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Math\Vector4.h">
       <Filter>include\YTEngine\Math</Filter>
     </ClInclude>
     <ClInclude Include="include\YTEngine\Reflection\ApplicationDomain.h">
@@ -218,6 +230,12 @@
     </ClInclude>
     <ClInclude Include="include\YTEngine\Scene\SceneView.h">
       <Filter>include\YTEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Scripting\DLLSource.h">
+      <Filter>include\YTEngine\Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="include\YTEngine\Scripting\ScriptLoader.h">
+      <Filter>include\YTEngine\Scripting</Filter>
     </ClInclude>
     <ClInclude Include="include\YTEngine\Tools\AutoSingleton.h">
       <Filter>include\YTEngine\Tools</Filter>
@@ -331,6 +349,12 @@
     </ClCompile>
     <ClCompile Include="src\Scene\SceneSerializer.cpp">
       <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripting\DLLSource.cpp">
+      <Filter>src\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripting\ScriptLoader.cpp">
+      <Filter>src\Scripting</Filter>
     </ClCompile>
     <ClCompile Include="src\Tools\Path.cpp">
       <Filter>src\Tools</Filter>

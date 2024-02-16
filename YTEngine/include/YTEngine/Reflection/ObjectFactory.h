@@ -20,7 +20,7 @@ namespace Yor
 				Type<data_type> type;
 				if (type.ref() != TypeRef::Unknown)
 				{
-					MetaInfo meta(name, name, type.id());
+					MetaInfo meta(name, type.debugName(), type.id());
 					m_properties.push_back({ meta, type.ref(), offset });
 				}
 			}

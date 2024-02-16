@@ -2,6 +2,7 @@
 #include "YTEngine/Core/Time.h"
 #include "YTEngine/Graphics/Renderer.h"
 #include "YTEngine/Debug/Log.h"
+#include "YTEngine/Scripting/ScriptLoader.h"
 
 namespace Yor
 {
@@ -19,6 +20,7 @@ namespace Yor
     m_imGUI = ImGUIDisplay::Builder().build();
 
     Renderer::_construct();
+    ScriptLoader::_loadEngineModules();
 
     Log::info("Application Started!");
   }
@@ -50,6 +52,7 @@ namespace Yor
   {
     OnClose();
     Renderer::_destruct();
+    ScriptLoader::_freeEngineModules();
     m_running = false;
     return true;
   }

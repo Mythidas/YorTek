@@ -20,7 +20,7 @@ namespace Yor
 				Type<data_type> type;
 				if (type.ref() != TypeRef::Unknown)
 				{
-					MetaInfo meta(name, name, type.id());
+					MetaInfo meta(name, type.debugName(), type.id());
 					m_properties.push_back({ meta, type.ref(), offset});
 				}
 			}
@@ -36,8 +36,14 @@ namespace Yor
 			meta.info.id = Type<T>().id();
 			meta.info.size = sizeof(T);
 			meta.properties = m_properties;
-			domain->registerComponent(meta);
+			domain->registerComponent(meta, YT_BIND_FNC(_addComponent));
 			return meta;
+		}
+
+	public:
+		void _addComponent(SceneRegistry* registry, unsigned long long id)
+		{
+			registry->addComponent<T>(id);
 		}
 
 	private:

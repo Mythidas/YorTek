@@ -73,7 +73,7 @@ namespace Yor
       {
         char* data = (char*)entity.getComponent(comp.info.id);
 
-        out << YAML::Key << comp.info.id << YAML::Value << YAML::BeginMap;
+        out << YAML::Key << comp.info.debugName << YAML::Value << YAML::BeginMap;
         for (auto& prop : comp.properties)
         {
           _serializeProperty(out, data, prop);
@@ -159,11 +159,11 @@ namespace Yor
 
       for (auto comp : comps)
       {
-        ObjectMeta meta = ApplicationDomain::get().findComponent(comp.first.as<uint64_t>());
+        ObjectMeta meta = ApplicationDomain::get().findComponent(Stringf::hash(comp.first.as<std::string>()));
         char* data = (char*)ent.addComponent(meta.info.id);
         if (!data) continue;
 
-        YAML::Node compIn = (YAML::Node)comp;
+        YAML::Node compIn = comp.second;
         for (auto& prop : meta.properties)
         {
           if (compIn[prop.info.debugName])

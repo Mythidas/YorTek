@@ -7,8 +7,11 @@
 
 namespace Yor
 {
+  class SceneRegistry;
+
   class ApplicationDomain : public AutoSingleton<ApplicationDomain>
   {
+    using CompAdd = std::function<void(SceneRegistry*, unsigned long long)>;
   public:
     ApplicationDomain();
 
@@ -17,12 +20,14 @@ namespace Yor
     const ObjectMeta& findObject(const TypeID& id);
     const std::unordered_map<TypeID, ObjectMeta>& getAllObjects();
 
-    void registerComponent(const ObjectMeta& meta);
+    void registerComponent(const ObjectMeta& meta, CompAdd func);
     const ObjectMeta& findComponent(const TypeID& id);
     const std::unordered_map<TypeID, ObjectMeta>& getAllComponents();
+    void callComponentAdd(const TypeID& id, SceneRegistry* registry, unsigned long long uuid);
 
   private:
     std::unordered_map<TypeID, ObjectMeta> m_registeredObjects;
     std::unordered_map<TypeID, ObjectMeta> m_registeredComponents;
+    std::unordered_map<TypeID, CompAdd> m_registeredComponentFuncs;
   };
 }
