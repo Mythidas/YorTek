@@ -7,6 +7,7 @@
 namespace Yor
 {
   Application* Application::s_instance{ nullptr };
+  bool Application::s_running{ false };
 
   Application::Application(const ApplicationSpecs& specs)
     : m_specs(specs)
@@ -22,6 +23,7 @@ namespace Yor
     Renderer::_construct();
     ScriptLoader::_loadEngineModules();
 
+    s_running = true;
     Log::info("Application Started!");
   }
 
@@ -29,7 +31,7 @@ namespace Yor
   {
     onStart();
 
-    while (m_running)
+    while (s_running)
     {
       Time::_tick();
 
@@ -53,7 +55,7 @@ namespace Yor
     OnClose();
     Renderer::_destruct();
     ScriptLoader::_freeEngineModules();
-    m_running = false;
+    s_running = false;
     return true;
   }
 }

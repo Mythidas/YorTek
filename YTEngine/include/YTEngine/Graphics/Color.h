@@ -1,6 +1,6 @@
 #pragma once
 
-#include "YTEngine/Reflection/Type.h"
+#include "YTEngine/Reflection/Object.h"
 
 namespace Yor
 {
@@ -10,5 +10,13 @@ namespace Yor
     float r = 0;
     float g = 0;
     float b = 0;
+
+    virtual void _registerData() override
+    {
+      _registerProperty<float>("R", offsetof(Color, r));
+      _registerProperty<float>("G", offsetof(Color, g));
+      _registerProperty<float>("B", offsetof(Color, b));
+    }
   };
+  OBJ_CLASS(Color)
 }

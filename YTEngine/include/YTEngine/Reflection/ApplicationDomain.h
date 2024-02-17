@@ -9,6 +9,7 @@ namespace Yor
 {
   class SceneRegistry;
 
+  // Contains all info needed for runtime execution
   class ApplicationDomain : public AutoSingleton<ApplicationDomain>
   {
     using CompAdd = std::function<void(SceneRegistry*, unsigned long long)>;

@@ -10,6 +10,8 @@ namespace Yor
 {
   Camera::Camera()
   {
+    if (!Application::isRunning()) return;
+
     glm::uvec2 size(Application::getWindow()->getWidth(), Application::getWindow()->getHeight());
     m_swapBuffer = Framebuffer::Builder()
       .setSize(size)

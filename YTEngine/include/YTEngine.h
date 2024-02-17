@@ -8,6 +8,9 @@
 #include "YTEngine/Core/Input.h"
 #include "YTEngine/Core/Time.h"
 
+// Graphics
+#include "YTEngine/Graphics/Color.h"
+
 // Reflectiion
 #include "YTEngine/Reflection/ApplicationDomain.h"
 

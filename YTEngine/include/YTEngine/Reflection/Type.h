@@ -11,11 +11,11 @@ namespace Yor
 
 	// Used as a tag to know which types are objects at compile time
 	// Objects still need to have a registered ObjectMeta with the Domain to be dereferenced
-	class Object {};
+	class _BaseObject {};
 
 	// Used as a tag to know which types are objects at compile time
 	// Objects still need to have a registered ComponentMeta with the ComponentRegistry to be dereferenced
-	class Component {};
+	class _BaseComponent {};
 
 	enum class TypeRef : int
 	{
@@ -57,9 +57,9 @@ namespace Yor
 
 		TypeRef ref() const
 		{
-			if constexpr (std::is_convertible_v<T, Object>)
+			if constexpr (std::is_convertible_v<T, _BaseObject>)
 				return TypeRef::Object;
-			else if constexpr (std::is_convertible_v<T, Component>)
+			else if constexpr (std::is_convertible_v<T, _BaseComponent>)
 				return TypeRef::Component;
 			else if constexpr (std::is_same_v<T, std::string>)
 				return TypeRef::String;

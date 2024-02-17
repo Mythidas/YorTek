@@ -15,6 +15,7 @@ namespace Yor::Editor
   void EditorApplication::onStart()
   {
     clearPayload();
+    m_camera = EditorCamera();
   }
 
   void EditorApplication::onUpdate()

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "YTEngine/Math/Vector3.h"
-#include "YTEngine/Reflection/Type.h"
+#include "YTEngine/Reflection/Object.h"
 
 #include <glm/glm.hpp>
 
@@ -22,5 +22,13 @@ namespace Yor
     Vector3 left() const;
     Vector3 up() const;
     Vector3 down() const;
+
+    virtual void _registerData() override
+    {
+      _registerProperty<Vector3>("Position", offsetof(Transform, position));
+      _registerProperty<Vector3>("Rotation", offsetof(Transform, rotation));
+      _registerProperty<Vector3>("Scale", offsetof(Transform, scale));
+    }
   };
+  OBJ_CLASS(Transform)
 }

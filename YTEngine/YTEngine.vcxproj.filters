@@ -252,6 +252,8 @@
     <ClInclude Include="include\YTEngine\Tools\Stringf.h">
       <Filter>include\YTEngine\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="include\YTEngine\Reflection\Object.h" />
+    <ClInclude Include="include\YTEngine\Reflection\Component.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -362,5 +364,7 @@
     <ClCompile Include="src\Tools\Stringf.cpp">
       <Filter>src\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="src\Reflection\Object.cpp" />
+    <ClCompile Include="src\Reflection\Component.cpp" />
   </ItemGroup>
 </Project>

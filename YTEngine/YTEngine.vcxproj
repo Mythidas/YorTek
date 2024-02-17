@@ -176,9 +176,11 @@
     <ClInclude Include="include\YTEngine\Math\Vector3.h" />
     <ClInclude Include="include\YTEngine\Math\Vector4.h" />
     <ClInclude Include="include\YTEngine\Reflection\ApplicationDomain.h" />
+    <ClInclude Include="include\YTEngine\Reflection\Component.h" />
     <ClInclude Include="include\YTEngine\Reflection\ComponentFactory.h" />
     <ClInclude Include="include\YTEngine\Reflection\MetaInfo.h" />
     <ClInclude Include="include\YTEngine\Reflection\ObjectFactory.h" />
+    <ClInclude Include="include\YTEngine\Reflection\Object.h" />
     <ClInclude Include="include\YTEngine\Reflection\Type.h" />
     <ClInclude Include="include\YTEngine\Scene\ComponentPool.h" />
     <ClInclude Include="include\YTEngine\Scene\Entity.h" />
@@ -225,6 +227,8 @@
     <ClCompile Include="src\Platform\OpenGL\OGL_RenderCommands.cpp" />
     <ClCompile Include="src\Platform\Windows\W_Window.cpp" />
     <ClCompile Include="src\Reflection\ApplicationDomain.cpp" />
+    <ClCompile Include="src\Reflection\Component.cpp" />
+    <ClCompile Include="src\Reflection\Object.cpp" />
     <ClCompile Include="src\Scene\Entity.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Scene\SceneManager.cpp" />

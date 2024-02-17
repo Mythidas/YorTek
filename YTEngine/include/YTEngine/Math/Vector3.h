@@ -1,6 +1,6 @@
 #pragma once
 
-#include "YTEngine/Reflection/Type.h"
+#include "YTEngine/Reflection/Object.h"
 
 #include <glm/glm.hpp>
 
@@ -52,6 +52,13 @@ namespace Yor
 		union { T x, r; };
 		union { T y, g; };
 		union { T z, b; };
+
+		virtual void _registerData() override
+		{
+			_registerProperty<T>("X", offsetof(TVector3<T>, x));
+			_registerProperty<T>("Y", offsetof(TVector3<T>, y));
+			_registerProperty<T>("Z", offsetof(TVector3<T>, z));
+		}
 
 	public:
 		inline static const glm::vec3 one{ 1.0f, 1.0f, 1.0f };
@@ -109,6 +116,9 @@ namespace Yor
 			return glm::uvec3(x, y, z);
 		}
   };
+	OBJ_CLASS(Vector3)
+	OBJ_CLASS(IVector3)
+	OBJ_CLASS(UVector3)
 
 	// Scalar Ops
 

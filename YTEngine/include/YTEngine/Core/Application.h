@@ -44,16 +44,17 @@ namespace Yor
     static Unique<Window>& getWindow() { return get().m_window; }
     static ApplicationBackend getBackend() { return get().m_specs.backend; }
     static Unique<ImGUIDisplay>& getImGUI() { return get().m_imGUI; }
+    static bool isRunning() { return s_running; }
 
   private:
     bool _onClose();
 
   private:
     static Application* s_instance;
+    static bool s_running;
 
   private:
     ApplicationSpecs m_specs;
-    bool m_running{ true };
     Unique<Window> m_window;
     Unique<ImGUIDisplay> m_imGUI;
   };

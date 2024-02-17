@@ -1,7 +1,7 @@
 #pragma once
 
 #include "YTEngine/Core/Defines.h"
-#include "YTEngine/Reflection/Type.h"
+#include "YTEngine/Reflection/Component.h"
 #include "YTEngine/Graphics/Framebuffer.h"
 
 #include <glm/glm.hpp>
@@ -33,6 +33,11 @@ namespace Yor
 
     glm::mat4 getProjection() const { return m_projection; }
     Shared<Framebuffer> getSwapBuffer() const { return m_swapBuffer; }
+
+    virtual void _registerData() override
+    {
+      
+    }
     
   public:
     static Ref<Camera> getActiveCamera();
@@ -42,4 +47,5 @@ namespace Yor
     Shared<Framebuffer> m_swapBuffer;
     glm::uvec2 m_currentSize;
   };
+  COMPONENT_CLASS(Camera)
 }
